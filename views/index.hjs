@@ -6,15 +6,16 @@
     <link rel='stylesheet' href='/lib/ratchet/dist/ratchet.css' />
     <link rel='stylesheet' href='/lib/brick/dist/brick.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/lib/Font-Awesome/css/font-awesome.min.css' />
   </head>
   <body>
     <header class="bar-title">
-      <a class="button btn_prev" href="#">
-        Left
+      <a id="button_left" class="button btn_to" href="#" data-to="0" data-bh="list" style="display:none;">
+          <i class="icon-list-ul"></i>
       </a>
       <h1 class="title">2013年度</h1>
-      <a class="button btn_next" href="#" >
-        Right
+      <a id="button_right" class="button btn_to" href="#" data-to="2" data-bh="new">
+          <i class="icon-plus"></i>
       </a>
     </header> 
 
@@ -24,12 +25,11 @@
                 0<span>I'm the first card!</span>
             </x-card>
             <x-card>
-
               <ul class="list">
                 <li>
-                  <a href="#">
+                  <a href="#" class="btn_to" data-to="2" data-bh="edit">
                     <h4>6月份</h4>
-                    总: &yen;2000 - 较上个月增加了1000元
+                    总: &yen;<span class="price">2000</span> - 较上个月增加了1000元
                     <span class="chevron"></span>
                   </a>
                 </li>
@@ -82,16 +82,28 @@
                   </a>
                 </li>
               </ul>
-
             </x-card>
             <x-card>
-                2<img src="thumbs_up.gif">
+                <form class="ne_form">
+                    <div class="input-group">
+                        <div class="input-row">
+                            <label>月份</label>
+                            <input type="text" placeholder="6月份" id="input_month">
+                        </div>
+                        <div class="input-row">
+                            <label>账目总和</label>
+                            <input type="number" placeholder="2000" id="input_count">
+                        </div>
+                    </div>
+                    <a class="button-main button-block">保存</a>
+                </form>
             </x-card>
         </x-deck>
     </div>
 
     <script src="/lib/ratchet/dist/ratchet.js"></script>
     <script src="/lib/brick/dist/brick.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="/javascripts/main.js"></script>
   </body>
 </html>

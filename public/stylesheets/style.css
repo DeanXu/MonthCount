@@ -1,4 +1,9 @@
 .content h4 {
   margin-bottom: 4px;
 }
-
+.ne_form {
+  padding: 10px;
+}
+.bar-title i[class^="icon-"] {
+  font-size: 14px;
+}
