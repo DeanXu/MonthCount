@@ -1,8 +1,6 @@
-
 document.addEventListener('DOMComponentsLoaded', function(){
     var toButton = $(".btn_to");
     var deck = document.querySelector("x-deck");
-
     toButton.click(function(){
         var num = $(this).data("to");
         var behavior = $(this).data("bh");
@@ -42,7 +40,5 @@ document.addEventListener('DOMComponentsLoaded', function(){
             $("#input_month").val(t);
             $("#input_count").val(p);
         }
-
     });
-
 });
