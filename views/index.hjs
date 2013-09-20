@@ -17,7 +17,7 @@
       <a id="button_right" class="button btn_to" href="#" data-to="2" data-bh="new">
           <i class="icon-plus"></i>
       </a>
-    </header> 
+    </header>
 
     <div class="content">
         <x-deck selected-index="1">
@@ -26,6 +26,7 @@
             </x-card>
             <x-card>
               <ul class="list">
+                  <!--
                 <li>
                   <a href="#" class="btn_to" data-to="2" data-bh="edit">
                     <h4>6月份</h4>
@@ -81,6 +82,7 @@
                     <span class="chevron"></span>
                   </a>
                 </li>
+-->
               </ul>
             </x-card>
             <x-card>
@@ -95,7 +97,7 @@
                             <input type="number" placeholder="2000" id="input_count">
                         </div>
                     </div>
-                    <a class="button-main button-block">保存</a>
+                    <a class="button-main button-block" id="save">保存</a>
                 </form>
             </x-card>
         </x-deck>
