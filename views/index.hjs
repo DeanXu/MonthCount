@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>{{ title }}</title>
-    <meta name="viewport" content="initial-scale=1.0;maximum-scale=1.0; user-scalable=no;">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="MonthCount">
-    <title>MonthCount</title>
     <link rel='stylesheet' href='/lib/ratchet/dist/ratchet.css' />
     <link rel='stylesheet' href='/lib/brick/dist/brick.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -93,7 +92,21 @@
                     <div class="input-group">
                         <div class="input-row">
                             <label>月份</label>
-                            <input type="text" placeholder="6月份" id="input_month">
+                            <select id="input_month" style="width:50px;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            月
                         </div>
                         <div class="input-row">
                             <label>账目总和</label>

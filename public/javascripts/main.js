@@ -112,7 +112,7 @@ document.addEventListener('DOMComponentsLoaded', function(){
     function temp(_id,month,count){
         var temp = '<li data-id="'+_id+'">\
                     <a href="#" class="btn_to" data-to="2" data-bh="edit">\
-                      <h4>'+month+'</h4>\
+                      <h4>'+month+'月份</h4>\
                       总: &yen;<span class="price">'+count+'</span>\
                       <span class="chevron"></span>\
                     </a>\
