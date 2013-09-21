@@ -138,7 +138,6 @@ document.addEventListener('DOMComponentsLoaded', function(){
         return temp;
     }
     init();
-    console.log(localStorage);
 
     //document.addEventListener('touchmove', function(e) { e.preventDefault(); }, true);
 
