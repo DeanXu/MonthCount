@@ -29,7 +29,7 @@ document.addEventListener('DOMComponentsLoaded', function(){
             $("#button_right").show();
             $("#input_month, #input_count").val("");
         }else if(behavior = "edit" && num == 2){
-            var t = $(this).find("h4").html();
+            var t = $(this).find("h4").find("span").html();
             var p = $(this).find(".price").html();
             $(".title").html("编辑");
             $("#button_left")
@@ -54,44 +54,56 @@ document.addEventListener('DOMComponentsLoaded', function(){
         alert("请将信息填写完整！");
         return ;
       }
-      $("#input_month, #input_count").val("");
       if(type == "new"){
         _id = _id+1;
-        $(".list").append(temp(_id, month, count));
         localStorage._id = _id;
         save({
           id : _id,
           month : month,
           count : count
-        });
+        },"new");
       }else if(type == "edit"){
         var id = $("#save").data("id");
-        $(".list").find("li[data-id="+id+"]").find("h4").html(month);
-        $(".list").find("li[data-id="+id+"]").find(".price").html(count);
+        var nOre = "edit";
+        var e_month = $(".list").find("li[data-id="+id+"]").find("h4").find("span").html();
+
+        if(month != e_month)
+          nOre = "new";
+
         save({
           id : id,
           month : month,
           count : count
-        });
+        },nOre);
       }else{
         return ;
       }
-      $("#button_left").click();
     });
 
-    function save(data){
+    function save(data,stat){
+      var stop = false;
       if(localStorage.data){
-        var id = data.id;
         var d = localStorage.data;
         var j = JSON.parse(d);
-        j[id] = data;
 
-        localStorage.data = JSON.stringify(j);
+        $.each(j,function(k,v){
+          if(v.month == data.month && stat == "new")
+            stop = true;
+        });
       }else{
         var j  = {};
-        j[data.id] = data;
-        localStorage.data = JSON.stringify(j);
       }
+
+      if(stop){
+        alert("该月份的金额已经存在");
+        return ;
+      }
+
+      j[data.id] = data;
+      localStorage.data = JSON.stringify(j);
+      init();
+      $("#button_left").click();
+      $("#input_month, #input_count").val("");
     }
 
     function clear(){
@@ -99,11 +111,17 @@ document.addEventListener('DOMComponentsLoaded', function(){
     }
     
     function init(){
+      $(".list").html("");
       if(localStorage.data){
         var d = JSON.parse(localStorage.data);
         var html = "";
-        $.each(d,function(k,v){
-          html += temp(k, v.month, v.count);
+        var new_d = [];
+        $.each(d, function(k,v){
+          new_d[v.month] = v;
+        });
+        $.each(new_d,function(k,v){
+          if(v)
+            html += temp(v.id, v.month, v.count);
         });
         $(".list").append(html);
       }
@@ -112,7 +130,7 @@ document.addEventListener('DOMComponentsLoaded', function(){
     function temp(_id,month,count){
         var temp = '<li data-id="'+_id+'">\
                     <a href="#" class="btn_to" data-to="2" data-bh="edit">\
-                      <h4>'+month+'月份</h4>\
+                      <h4><span>'+month+'</span>月份</h4>\
                       总: &yen;<span class="price">'+count+'</span>\
                       <span class="chevron"></span>\
                     </a>\
@@ -120,6 +138,7 @@ document.addEventListener('DOMComponentsLoaded', function(){
         return temp;
     }
     init();
+    console.log(localStorage);
 
     //document.addEventListener('touchmove', function(e) { e.preventDefault(); }, true);
 
