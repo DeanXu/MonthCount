@@ -13,11 +13,11 @@
   <body>
     <header class="bar-title">
       <a id="button_left" class="button btn_to" href="#" data-to="0" data-bh="list" style="display:none;">
-          <i class="icon-list-ul"></i>
+          <i class="fa fa-list-ul"></i>
       </a>
       <h1 class="title">2013年度</h1>
       <a id="button_right" class="button btn_to" href="#" data-to="2" data-bh="new">
-          <i class="icon-plus"></i>
+          <i class="fa fa-plus"></i>
       </a>
     </header>
 
